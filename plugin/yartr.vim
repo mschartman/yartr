@@ -1,12 +1,12 @@
-let s:path=expand('<sfile>:p:h')
+let s:yartr_path=expand('<sfile>:p:h')
 
-map <Leader>t :call RunCommandSingle()<CR>
-map <Leader>T :call RunCommandAll()<CR>
+map <Leader>t :call YartrRunTestSingle()<CR>
+map <Leader>T :call YartrRunTestAll()<CR>
 
-function! RunCommandSingle()
-  execute "silent !osascript ".shellescape(s:path)."/../lib/run_command 'cd ' `pwd` ' && ruby -Itest ' % ' --name=' <cword>"
+function! YartrRunTestSingle()
+  execute "silent !osascript ".shellescape(s:yartr_path)."/../lib/run_command 'cd ' `pwd` ' && ruby -Itest ' % ' --name=' <cword>"
 endfunction
 
-function! RunCommandAll()
-  execute "silent !osascript ".shellescape(s:path)."/../lib/run_command 'cd ' `pwd` ' && ruby -Itest ' %"
+function! YartrRunTestAll()
+  execute "silent !osascript ".shellescape(s:yartr_path)."/../lib/run_command 'cd ' `pwd` ' && ruby -Itest ' %"
 endfunction
