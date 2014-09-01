@@ -1,0 +1,25 @@
+#!/usr/bin/env osascript
+on run argv
+    tell application "Finder" to set iTermExists to exists my POSIX file "/Applications/iTerm.app"
+
+    if iTermExists
+        tell application "iTerm"
+            activate
+
+            set myterm to (make new terminal)
+            tell myterm
+
+                launch session "Default Session"
+
+                tell the last session
+                    write text argv as string
+                end tell
+            end tell
+        end tell
+    else
+        tell application "Terminal"  
+            do script argv
+            activate  
+        end tell
+    end if
+end run
