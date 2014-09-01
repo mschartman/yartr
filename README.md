@@ -13,6 +13,13 @@ Copy all of the files to your ~/.vim directory.
 
 * Press `<Leader>T` to run all of the tests in the current file.
 
+## Configuration
+
+To change the default bindings:
+
+* `map <Leader>] :call YartrRunTestSingle()<CR>` change from <Leader>t to <Leader>] for single test runner
+* `map <Leader>} :call YartrRunTestAll()<CR>` change from <Leader>T to <Leader>} for all tests runner
+
 ## License
 
 Copyright (c) Matt Schartman.  Distributed under the same terms as Vim itself.
