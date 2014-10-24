@@ -14,13 +14,15 @@ function! YartrRunTestSingle()
     :normal wwyw
     let test_name=@"
   endif
-  let file_path=@% 
-  let cd_dir=matchstr(file_path, '.*/engines/[^/]*')
-  execute "silent !osascript ".shellescape(s:yartr_path)."/../lib/run_command 'cd ' `pwd` ' && cd ./'"matchstr(@%,'.*/\?engines/[^/]*')" ' && ruby -Itest ' "matchstr(@%,'test/.*')" ' --name=' "test_name""
+  let file_path=@%
+  let cd_dir=matchstr(file_path, 'engines/[^/]*')
+  let test_path= matchstr(file_path,'test/.*')
+  execute "silent !osascript ".shellescape(s:yartr_path)."/../lib/run_command 'cd ' `pwd` ' && cd ./'"cd_dir" ' && ruby -Itest ' "test_path" ' --name=' "test_name""
 endfunction
 
 function! YartrRunTestAll()
-  let file_path=@% 
-  let cd_dir=matchstr(file_path, '.*/engines/[^/]*')
-  execute "silent !osascript ".shellescape(s:yartr_path)."/../lib/run_command 'cd ' `pwd` ' && cd ./'"matchstr(@%,'.*/\?engines/[^/]*')" ' && ruby -Itest ' "matchstr(@%,'test/.*')""
+  let file_path=@%
+  let cd_dir=matchstr(file_path, 'engines/[^/]*')
+  let test_path= matchstr(file_path,'test/.*')
+  execute "silent !osascript ".shellescape(s:yartr_path)."/../lib/run_command 'cd ' `pwd` ' && cd ./'"cd_dir" ' && ruby -Itest ' "test_path""
 endfunction
