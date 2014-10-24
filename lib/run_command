@@ -17,9 +17,10 @@ on run argv
             end tell
         end tell
     else
-        tell application "Terminal"  
-            do script argv
-            activate  
+        tell application "Terminal"
+            activate
+            tell application "System Events" to keystroke "n" using {command down}
+            do script argv as string in window 1
         end tell
     end if
 end run
